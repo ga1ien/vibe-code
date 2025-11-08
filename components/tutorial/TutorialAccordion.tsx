@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import {
   Accordion,
@@ -27,6 +27,7 @@ export function TutorialAccordion({
 }: TutorialAccordionProps) {
   const sectionRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
   const isInitialMount = useRef(true);
+  const [showAllExamples, setShowAllExamples] = useState(false);
 
   useEffect(() => {
     // Skip scroll on initial mount to prevent auto-scrolling to Part 1
@@ -43,6 +44,11 @@ export function TutorialAccordion({
           block: "start",
         });
       }, 400); // Matches accordion + content animation duration
+    }
+
+    // Reset showAllExamples when switching away from Part 17
+    if (activeSection !== 'part-17') {
+      setShowAllExamples(false);
     }
   }, [activeSection]);
 
@@ -71,14 +77,18 @@ export function TutorialAccordion({
       .replace(/\n/g, "<br />");
   };
 
-  const renderContent = (content: string, isActive: boolean) => {
+  const renderContent = (content: string, isActive: boolean, sectionId: string) => {
     // Remove the first ## header (PART X: title) since it's already in the accordion trigger
     const contentWithoutTitle = content.replace(/^##\s+PART\s+\d+:.*?\n+/i, '');
+
+    // For Part 17, handle expandable examples
+    const isPart17 = sectionId === 'part-17';
 
     const parts = [];
     const codeBlockRegex = /```(\w+)?\n([\s\S]*?)```/g;
     let lastIndex = 0;
     let match;
+    let exampleCount = 0;
 
     while ((match = codeBlockRegex.exec(contentWithoutTitle)) !== null) {
       // Add text before code block
@@ -98,10 +108,36 @@ export function TutorialAccordion({
       // Add code block - only render when section is active (lazy load on expansion)
       const language = match[1] || "bash";
       const code = match[2].trim();
+
       if (isActive) {
-        parts.push(
-          <CodeBlock key={`code-${match.index}`} code={code} language={language} />
-        );
+        // Check if this is an example prompt in Part 17
+        const isExamplePrompt = isPart17 && code.includes("Project Description:");
+
+        if (isExamplePrompt) {
+          exampleCount++;
+        }
+
+        // Show first example always, hide examples 2-4 unless expanded
+        const shouldShow = !isExamplePrompt || exampleCount === 1 || showAllExamples;
+
+        if (shouldShow) {
+          parts.push(
+            <CodeBlock key={`code-${match.index}`} code={code} language={language} />
+          );
+
+          // Add "Show More Examples" button after first example
+          if (isPart17 && isExamplePrompt && exampleCount === 1 && !showAllExamples) {
+            parts.push(
+              <button
+                key={`toggle-${match.index}`}
+                onClick={() => setShowAllExamples(true)}
+                className="mt-4 px-6 py-3 bg-purple-600/20 hover:bg-purple-600/30 border border-purple-500/30 rounded-lg text-purple-300 font-medium transition-all duration-200 hover:scale-105"
+              >
+                Show More Examples (3 more)
+              </button>
+            );
+          }
+        }
       }
 
       lastIndex = match.index + match[0].length;
@@ -118,6 +154,19 @@ export function TutorialAccordion({
             __html: formatMarkdown(text),
           }}
         />
+      );
+    }
+
+    // Add "Show Fewer Examples" button at the end if expanded
+    if (isPart17 && showAllExamples && isActive) {
+      parts.push(
+        <button
+          key="toggle-collapse"
+          onClick={() => setShowAllExamples(false)}
+          className="mt-4 px-6 py-3 bg-purple-600/20 hover:bg-purple-600/30 border border-purple-500/30 rounded-lg text-purple-300 font-medium transition-all duration-200 hover:scale-105"
+        >
+          Show Fewer Examples
+        </button>
       );
     }
 
@@ -171,7 +220,7 @@ export function TutorialAccordion({
                   transition={{ duration: 0.4 }}
                   className="space-y-4"
                 >
-                  {renderContent(section.content, activeSection === section.id)}
+                  {renderContent(section.content, activeSection === section.id, section.id)}
                 </motion.div>
               </AccordionContent>
             </AccordionItem>
