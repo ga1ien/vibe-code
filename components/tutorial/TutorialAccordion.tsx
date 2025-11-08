@@ -29,10 +29,13 @@ export function TutorialAccordion({
 
   useEffect(() => {
     if (activeSection && sectionRefs.current[activeSection]) {
-      sectionRefs.current[activeSection]?.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
+      // Wait for accordion animation to complete before scrolling
+      setTimeout(() => {
+        sectionRefs.current[activeSection]?.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }, 400); // Matches accordion + content animation duration
     }
   }, [activeSection]);
 
