@@ -35,7 +35,7 @@ Before we start, here's what this guide will help you set up:
 
 2. Copy and paste this template into your document:
 
-```
+```text
 ===========================================
 MY VIBE CODING CREDENTIALS
 Created: [Today's Date]
@@ -478,7 +478,7 @@ Claude Code is a command-line tool that lets you code directly with Claude AI.
 5. Click **"Yes"** when asked if you want to allow changes
 6. A blue window will open
 7. Type or paste this command:
-```
+```bash
 npm install -g @anthropic-ai/claude-code
 ```
 8. Press Enter
@@ -492,7 +492,7 @@ npm install -g @anthropic-ai/claude-code
 3. Press Enter
 4. A window will open
 5. Type or paste this command:
-```
+```bash
 npm install -g @anthropic-ai/claude-code
 ```
 6. Press Enter
@@ -507,7 +507,7 @@ Now we need to tell Claude Code how to connect to your Claude account.
 **On Windows (PowerShell) or Mac (Terminal):**
 
 1. Type this command:
-```
+```bash
 claude auth
 ```
 2. Press Enter
@@ -523,7 +523,7 @@ claude auth
 Let's make sure it works:
 
 1. In the same terminal window, type:
-```
+```bash
 claude --version
 ```
 2. Press Enter
@@ -638,7 +638,7 @@ Git works with GitHub to save your code.
 ### Configure Git with Your Information
 
 1. In Terminal or Command Prompt, type:
-```
+```bash
 git config --global user.name "YourName"
 ```
 (Replace YourName with your actual name)
@@ -1547,7 +1547,7 @@ Claude will now:
 After Claude finishes setting up, you need to connect your local project to the GitHub repo you created.
 
 1. In the terminal at the bottom of Cursor, type:
-```
+```bash
 git remote add origin https://github.com/yourusername/your-repo-name.git
 ```
 (Replace with your actual GitHub URL from earlier)
@@ -1555,14 +1555,14 @@ git remote add origin https://github.com/yourusername/your-repo-name.git
 2. Press Enter
 
 3. Type:
-```
+```bash
 git branch -M main
 ```
 
 4. Press Enter
 
 5. Type:
-```
+```bash
 git push -u origin main
 ```
 
@@ -1582,7 +1582,7 @@ Now let's see your app running!
 
 **For Next.js projects:**
 1. In the terminal, type:
-```
+```bash
 npm run dev
 ```
 2. Press Enter
@@ -1593,7 +1593,7 @@ npm run dev
 
 **For React Native (Expo) projects:**
 1. In the terminal, type:
-```
+```bash
 npx expo start
 ```
 2. Press Enter
@@ -1943,7 +1943,7 @@ If you're ready to take your project to the next level, Galen offers several ser
 
 Ready to build something amazing together?
 
-**Email:** g@braintied.com
+**Email:** [g@braintied.com](mailto:g@braintied.com)
 
 **What to include in your message:**
 - Brief description of your project or idea
