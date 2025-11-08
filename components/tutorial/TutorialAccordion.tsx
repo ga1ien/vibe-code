@@ -46,6 +46,31 @@ export function TutorialAccordion({
     }
   }, [activeSection]);
 
+  // Helper function to convert markdown to HTML with consistent formatting
+  const formatMarkdown = (text: string): string => {
+    return text
+      // Convert markdown headers
+      .replace(/^### (.+)$/gm, "<h3 class='text-xl font-bold text-slate-100 mt-6 mb-3'>$1</h3>")
+      .replace(/^#### (.+)$/gm, "<h4 class='text-lg font-bold text-slate-200 mt-4 mb-2'>$1</h4>")
+      // Convert bold text
+      .replace(/\*\*(.+?)\*\*/g, "<strong class='text-purple-300'>$1</strong>")
+      // Convert inline code
+      .replace(/`(.+?)`/g, "<code class='px-1.5 py-0.5 bg-slate-700 rounded text-sm'>$1</code>")
+      // Convert markdown links [text](url)
+      .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer" class="text-purple-400 hover:text-purple-300 font-medium transition-colors">$1</a>')
+      // Convert plain URLs (http:// or https://)
+      .replace(/(https?:\/\/[^\s<]+[^\s<.,;!?)])/g, '<a href="$1" target="_blank" rel="noopener noreferrer" class="text-purple-400 hover:text-purple-300 font-medium transition-colors">$1</a>')
+      // Convert bare domain names to clickable links
+      .replace(/\b(claude\.ai|supabase\.com|github\.com|vercel\.com|godaddy\.com|cursor\.sh|nodejs\.org)\b(?![^<]*<\/a>)/gi, '<a href="https://$1" target="_blank" rel="noopener noreferrer" class="text-purple-400 hover:text-purple-300 font-medium transition-colors">$1</a>')
+      // Convert numbered lists
+      .replace(/^\d+\. (.+)$/gm, "<li class='ml-4'>$1</li>")
+      // Convert bulleted lists
+      .replace(/^- (.+)$/gm, "<li class='ml-4'>$1</li>")
+      // Handle line breaks
+      .replace(/\n\n/g, "<br /><br />")
+      .replace(/\n/g, "<br />");
+  };
+
   const renderContent = (content: string, isActive: boolean) => {
     // Remove the first ## header (PART X: title) since it's already in the accordion trigger
     const contentWithoutTitle = content.replace(/^##\s+PART\s+\d+:.*?\n+/i, '');
@@ -62,12 +87,9 @@ export function TutorialAccordion({
         parts.push(
           <div
             key={`text-${lastIndex}`}
-            className="prose prose-invert prose-slate max-w-none"
+            className="prose prose-invert prose-slate max-w-none text-slate-300 leading-relaxed"
             dangerouslySetInnerHTML={{
-              __html: text
-                .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
-                .replace(/`(.+?)`/g, "<code>$1</code>")
-                .replace(/\n/g, "<br />"),
+              __html: formatMarkdown(text),
             }}
           />
         );
@@ -93,21 +115,7 @@ export function TutorialAccordion({
           key={`text-${lastIndex}`}
           className="prose prose-invert prose-slate max-w-none text-slate-300 leading-relaxed"
           dangerouslySetInnerHTML={{
-            __html: text
-              .replace(/\*\*(.+?)\*\*/g, "<strong class='text-purple-300'>$1</strong>")
-              .replace(/`(.+?)`/g, "<code class='px-1.5 py-0.5 bg-slate-700 rounded text-sm'>$1</code>")
-              // Convert markdown links [text](url)
-              .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer" class="text-purple-400 hover:text-purple-300 font-medium transition-colors">$1</a>')
-              // Convert plain URLs (http:// or https://)
-              .replace(/(https?:\/\/[^\s<]+[^\s<.,;!?)])/g, '<a href="$1" target="_blank" rel="noopener noreferrer" class="text-purple-400 hover:text-purple-300 font-medium transition-colors">$1</a>')
-              // Convert bare domain names to clickable links
-              .replace(/\b(claude\.ai|supabase\.com|github\.com|vercel\.com|godaddy\.com|cursor\.sh|nodejs\.org)\b(?![^<]*<\/a>)/gi, '<a href="https://$1" target="_blank" rel="noopener noreferrer" class="text-purple-400 hover:text-purple-300 font-medium transition-colors">$1</a>')
-              .replace(/^### (.+)$/gm, "<h3 class='text-xl font-bold text-slate-100 mt-6 mb-3'>$1</h3>")
-              .replace(/^#### (.+)$/gm, "<h4 class='text-lg font-bold text-slate-200 mt-4 mb-2'>$1</h4>")
-              .replace(/^\d+\. (.+)$/gm, "<li class='ml-4'>$1</li>")
-              .replace(/^- (.+)$/gm, "<li class='ml-4'>$1</li>")
-              .replace(/\n\n/g, "<br /><br />")
-              .replace(/\n/g, "<br />"),
+            __html: formatMarkdown(text),
           }}
         />
       );
