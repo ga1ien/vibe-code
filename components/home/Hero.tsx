@@ -1,38 +1,87 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight, Sparkles, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useState, useEffect } from "react";
+
+const examples = [
+  {
+    prompt: "Create a recipe organizer where I can save my family's favorite meals",
+    app: "Recipe Keeper"
+  },
+  {
+    prompt: "Build a birthday tracker so I never forget my friends' birthdays again",
+    app: "Birthday Reminder"
+  },
+  {
+    prompt: "Make a workout tracker to log my gym sessions and track progress",
+    app: "Fitness Logger"
+  },
+  {
+    prompt: "Design a budget planner to help me manage my monthly expenses",
+    app: "Budget Buddy"
+  },
+  {
+    prompt: "Build a reading list where I can track books I want to read",
+    app: "Reading Tracker"
+  }
+];
 
 export function Hero() {
+  const [currentExample, setCurrentExample] = useState(0);
+  const [displayedPrompt, setDisplayedPrompt] = useState("");
+  const [displayedApp, setDisplayedApp] = useState("");
+  const [isTypingPrompt, setIsTypingPrompt] = useState(true);
+  const [isTypingApp, setIsTypingApp] = useState(false);
+
+  // Type out the prompt
+  useEffect(() => {
+    if (!isTypingPrompt) return;
+
+    const targetText = examples[currentExample].prompt;
+    if (displayedPrompt.length < targetText.length) {
+      const timeout = setTimeout(() => {
+        setDisplayedPrompt(targetText.slice(0, displayedPrompt.length + 1));
+      }, 30); // Typing speed
+      return () => clearTimeout(timeout);
+    } else {
+      // Finished typing prompt, wait then start typing app
+      const timeout = setTimeout(() => {
+        setIsTypingPrompt(false);
+        setIsTypingApp(true);
+      }, 500);
+      return () => clearTimeout(timeout);
+    }
+  }, [displayedPrompt, currentExample, isTypingPrompt]);
+
+  // Type out the app name
+  useEffect(() => {
+    if (!isTypingApp) return;
+
+    const targetText = examples[currentExample].app;
+    if (displayedApp.length < targetText.length) {
+      const timeout = setTimeout(() => {
+        setDisplayedApp(targetText.slice(0, displayedApp.length + 1));
+      }, 50); // Typing speed
+      return () => clearTimeout(timeout);
+    } else {
+      // Finished typing, wait then move to next example
+      const timeout = setTimeout(() => {
+        setIsTypingApp(false);
+        setDisplayedPrompt("");
+        setDisplayedApp("");
+        setCurrentExample((prev) => (prev + 1) % examples.length);
+        setIsTypingPrompt(true);
+      }, 3000); // Pause before next example
+      return () => clearTimeout(timeout);
+    }
+  }, [displayedApp, currentExample, isTypingApp]);
+
   return (
     <section className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8">
       <div className="max-w-5xl mx-auto text-center">
-        {/* Floating Code Icon */}
-        <motion.div
-          className="mb-8 inline-block"
-          initial={{ opacity: 0, y: -50, rotateX: -90 }}
-          animate={{ opacity: 1, y: 0, rotateX: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-        >
-          <motion.div
-            animate={{
-              rotateY: [0, 360],
-              rotateZ: [0, 5, -5, 0],
-            }}
-            transition={{
-              rotateY: { duration: 20, repeat: Infinity, ease: "linear" },
-              rotateZ: { duration: 3, repeat: Infinity, ease: "easeInOut" },
-            }}
-            style={{ transformStyle: "preserve-3d" }}
-          >
-            <div className="glass-card p-8 rounded-2xl inline-block">
-              <Sparkles className="h-16 w-16 text-purple-400" />
-            </div>
-          </motion.div>
-        </motion.div>
-
         {/* Main Heading */}
         <motion.h1
           className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6"
@@ -41,28 +90,53 @@ export function Hero() {
           transition={{ duration: 0.6, delay: 0.4 }}
         >
           <span className="bg-gradient-to-r from-purple-400 via-blue-400 to-cyan-400 bg-clip-text text-transparent">
-            Start Vibe Coding
+            Build Anything by Just Describing It
           </span>
         </motion.h1>
 
         {/* Subheading with Typewriter Effect */}
         <motion.p
-          className="text-xl sm:text-2xl text-slate-300 mb-12 max-w-3xl mx-auto"
+          className="text-xl sm:text-2xl text-slate-300 mb-8 max-w-3xl mx-auto leading-relaxed"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.6 }}
         >
-          Build beautiful websites and apps with{" "}
-          <span className="text-purple-400 font-semibold">AI as your coding partner</span>.
-          Zero experience required.
+          No coding experience? No problem. With{" "}
+          <span className="text-purple-400 font-semibold">Vibe Coding</span>, you tell AI what you want in plain English,
+          and it writes the code for you.{" "}
+          <span className="text-cyan-400 font-semibold">Build websites, apps, and tools—instantly.</span>
         </motion.p>
 
-        {/* CTA Buttons */}
+        {/* Typing Example showcase */}
         <motion.div
-          className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+          className="glass-card p-6 rounded-2xl mb-12 max-w-2xl mx-auto text-left relative overflow-hidden"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.8 }}
+        >
+          <div className="text-sm text-slate-500 mb-2">You say:</div>
+          <div className="text-lg text-slate-200 mb-4 italic min-h-[3.5rem] flex items-start">
+            <span>"{displayedPrompt}</span>
+            {isTypingPrompt && <span className="inline-block w-0.5 h-5 bg-purple-400 ml-1 animate-pulse"></span>}
+            {!isTypingPrompt && <span>"</span>}
+          </div>
+          <div className="text-sm text-slate-500 mb-2">AI builds it:</div>
+          <div className="flex items-center gap-2">
+            <div className="h-2 w-2 rounded-full bg-green-400 animate-pulse"></div>
+            <div className="text-purple-400 font-mono text-sm flex items-center">
+              <span>Creating {displayedApp}</span>
+              {isTypingApp && <span className="inline-block w-0.5 h-4 bg-purple-400 ml-1 animate-pulse"></span>}
+              {displayedApp && !isTypingApp && <span>...</span>}
+            </div>
+          </div>
+        </motion.div>
+
+        {/* CTA Button */}
+        <motion.div
+          className="flex justify-center"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 1.0 }}
         >
           <Link href="/tutorial">
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
@@ -75,22 +149,6 @@ export function Hero() {
               </Button>
             </motion.div>
           </Link>
-
-          <a
-            href="https://github.com"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Button
-                size="lg"
-                variant="outline"
-                className="glass border-purple-500/30 hover:bg-white/10 px-8 py-6 text-lg rounded-xl"
-              >
-                View on GitHub
-              </Button>
-            </motion.div>
-          </a>
         </motion.div>
 
         {/* Scroll Indicator */}

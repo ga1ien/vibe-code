@@ -62,10 +62,10 @@ export function TutorialContent({ sections }: TutorialContentProps) {
       <main className="flex-1 p-6 lg:p-12 max-w-4xl mx-auto">
         <div className="mb-12">
           <h1 className="text-4xl sm:text-5xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">
-            The Complete Beginner's Guide to Vibe Coding
+            The Complete Beginner's<br />Guide to Vibe Coding
           </h1>
           <p className="text-xl text-slate-400">
-            Learn to build websites and apps with AI as your coding partner.
+            Learn to build websites and apps with AI as your coding partner.<br />
             Follow these steps to go from zero to deployed app.
           </p>
         </div>

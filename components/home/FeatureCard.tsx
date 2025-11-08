@@ -31,23 +31,20 @@ export function FeatureCard({
       }}
       style={{ transformStyle: "preserve-3d" }}
     >
-      <Card className="glass-card p-8 rounded-2xl hover:border-purple-500/40 transition-all duration-300 h-full">
-        {/* Icon */}
-        <motion.div
-          className="mb-6 inline-block"
-          whileHover={{ rotate: 360, scale: 1.1 }}
-          transition={{ duration: 0.5 }}
-        >
-          <div className="p-4 bg-gradient-to-br from-purple-500/20 to-blue-500/20 rounded-xl">
-            <Icon className="h-8 w-8 text-purple-400" />
-          </div>
-        </motion.div>
+      <Card className="glass-card p-8 rounded-2xl hover:border-purple-500/40 transition-all duration-300 h-full relative overflow-hidden">
+        {/* Large faint icon in background */}
+        <div className="absolute top-4 left-4 opacity-5">
+          <Icon className="h-32 w-32 text-purple-400" />
+        </div>
 
-        {/* Title */}
-        <h3 className="text-2xl font-bold mb-4 text-slate-100">{title}</h3>
+        {/* Content */}
+        <div className="relative z-10">
+          {/* Title */}
+          <h3 className="text-2xl font-bold mb-4 text-slate-100">{title}</h3>
 
-        {/* Description */}
-        <p className="text-slate-400 leading-relaxed">{description}</p>
+          {/* Description */}
+          <p className="text-slate-400 leading-relaxed">{description}</p>
+        </div>
       </Card>
     </motion.div>
   );

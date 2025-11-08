@@ -1,26 +1,44 @@
 "use client";
 
-import { Zap, Sparkles, Rocket } from "lucide-react";
+import { MessageSquare, Sparkles, Rocket, Code2, Lightbulb, Zap } from "lucide-react";
 import { FeatureCard } from "./FeatureCard";
 
 const features = [
   {
-    icon: Zap,
-    title: "Zero Experience Required",
+    icon: MessageSquare,
+    title: "Talk to AI, Build Instantly",
     description:
-      "Start coding without any prior knowledge. Our step-by-step guide walks you through every single detail, from installing tools to deploying your app.",
+      'Type "Make me a weather app" and watch AI create it in seconds. No syntax, no errors—just describe what you want in plain English.',
+  },
+  {
+    icon: Lightbulb,
+    title: "Zero Experience Needed",
+    description:
+      "Never written a line of code? Perfect. Our guide walks you through setting up AI tools and building your first project in under an hour.",
+  },
+  {
+    icon: Code2,
+    title: "Real Code, Real Skills",
+    description:
+      "You're not just using a no-code tool—you're building actual websites and apps with React, Next.js, and modern tech that developers use daily.",
   },
   {
     icon: Sparkles,
-    title: "AI-Powered Development",
+    title: "AI Does the Heavy Lifting",
     description:
-      "Work with Claude AI as your coding partner. Describe what you want to build, and AI writes the code for you - it's like having an expert developer by your side.",
+      "AI handles the complex code while you focus on ideas. Need changes? Just ask. Want it styled differently? Tell it. It's like having a developer on speed dial.",
   },
   {
     icon: Rocket,
-    title: "Deploy in Minutes",
+    title: "Live in Minutes, Not Months",
     description:
-      "Go from idea to live website in under an hour. Learn to build with modern tools like Next.js, Supabase, and Vercel - the same stack used by top companies.",
+      "Deploy your app to the internet instantly with one click. Share it with friends, add it to your portfolio, or start your own business—same day.",
+  },
+  {
+    icon: Zap,
+    title: "Build Anything You Can Imagine",
+    description:
+      "Todo apps, portfolios, e-commerce stores, social networks—if you can describe it, AI can build it. Start small or go big.",
   },
 ];
 
@@ -31,15 +49,18 @@ export function Features() {
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl sm:text-5xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">
-            Why Vibe Coding?
+            What is Vibe Coding?
           </h2>
-          <p className="text-xl text-slate-400 max-w-2xl mx-auto">
-            The fastest way to turn your ideas into real, working applications
+          <p className="text-xl text-slate-400 max-w-3xl mx-auto leading-relaxed">
+            It's the revolutionary way to build software by<br />describing what you want instead of writing code.
+            <span className="block mt-2 text-slate-300">
+              Think of it as <span className="text-purple-400 font-semibold">ChatGPT for building apps</span>.
+            </span>
           </p>
         </div>
 
         {/* Feature Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
           {features.map((feature, index) => (
             <FeatureCard
               key={feature.title}
@@ -49,6 +70,21 @@ export function Features() {
               delay={index * 0.2}
             />
           ))}
+        </div>
+
+        {/* CTA Section */}
+        <div className="text-center">
+          <h3 className="text-3xl font-bold text-slate-100 mb-4">
+            Ready to Start Building?
+          </h3>
+          <p className="text-lg text-slate-400 mb-8 max-w-2xl mx-auto">
+            Follow our complete step-by-step guide and build your first app in under an hour.
+          </p>
+          <a href="/tutorial">
+            <button className="bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white px-8 py-4 text-lg rounded-xl shadow-lg shadow-purple-500/50 transition-all hover:scale-105">
+              Start the Tutorial →
+            </button>
+          </a>
         </div>
       </div>
     </section>
