@@ -119,6 +119,7 @@ export function TutorialAccordion({
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
+            style={{ scrollMarginTop: "5rem" }}
           >
             <AccordionItem
               value={section.id}
