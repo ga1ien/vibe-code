@@ -1188,55 +1188,80 @@ Now let's create a folder on your computer that matches your GitHub repo.
    - If your repo is `my-awesome-app`, name the folder `my-awesome-app`
 6. Press Enter
 
+---
+
 ### Step 2: Open Your Project in Cursor
 
-1. Open Cursor
-2. Click **"File"** → **"Open Folder"** (or "Open..." on Mac)
-3. Navigate to your development folder
+1. Open Cursor (the code editor you installed earlier)
+2. In the top menu, click **"File"** → **"Open Folder"**
+   - On Mac: Click **"Open..."**
+3. Navigate to your **development** folder
 4. Select your new project folder (e.g., `my-awesome-app`)
 5. Click **"Open"** or **"Select Folder"**
-6. Cursor will now show your empty project folder
+6. Cursor will now show your empty project folder in the left sidebar
 
-### Step 3: Give Claude Code Access to GitHub
+---
 
-Now we'll connect Claude Code to your GitHub account so it can automatically save your work.
+### Step 3: Open the Integrated Terminal
 
-1. In Cursor, press **Ctrl + `** (Control + backtick on Windows) or **Cmd + `** (on Mac)
-   - This opens the integrated terminal at the bottom
-2. If terminal doesn't open, click **"Terminal"** → **"New Terminal"** from the top menu
-3. Type this command:
-```
+Cursor has a built-in terminal where you can type commands:
+
+1. Press **Ctrl + `** (Control + backtick on Windows) or **Cmd + `** (on Mac)
+   - This opens the integrated terminal at the bottom of Cursor
+2. If the terminal doesn't open, click **"Terminal"** in the top menu → **"New Terminal"**
+3. You should see a command prompt at the bottom of your screen
+
+---
+
+### Step 4: Configure Git with Your Information
+
+Now we'll tell Git who you are so it can track your work properly.
+
+**Type each command below, pressing Enter after each one:**
+
+1. Set your GitHub username:
+
+```bash
 git config --global user.name "YourGitHubUsername"
 ```
-(Replace YourGitHubUsername with your actual GitHub username)
 
-4. Press Enter
+(Replace `YourGitHubUsername` with your actual GitHub username)
 
-5. Type this command:
-```
+2. Set your GitHub email:
+
+```bash
 git config --global user.email "youremail@example.com"
 ```
+
 (Replace with the email you used for GitHub)
 
-6. Press Enter
+3. Save your GitHub credentials:
 
-7. Now we'll save your GitHub token so Claude can use it. Type:
+**On Windows, type:**
 
-**On Windows:**
-```
+```bash
 git config --global credential.helper wincred
 ```
 
-**On Mac:**
-```
+**On Mac, type:**
+
+```bash
 git config --global credential.helper osxkeychain
 ```
 
-8. Press Enter
+---
 
-**Note:** The first time Claude tries to push code to GitHub, you'll be asked for credentials:
+### Step 5: Understanding GitHub Authentication
+
+**IMPORTANT:** The first time you push code to GitHub, you'll be asked for credentials:
+
 - **Username:** Your GitHub username
-- **Password:** Use your **GitHub Personal Access Token** (from your credentials document), NOT your GitHub password
+- **Password:** Use your **GitHub Personal Access Token** (from your credentials document)
+  - **DO NOT** use your GitHub password
+  - The token should start with `ghp_`
+  - Copy it from your credentials document
+
+Once you enter your token once, your computer will remember it for future pushes!
 
 ---
 
@@ -1821,3 +1846,130 @@ If you get stuck:
 Remember: Everyone starts as a beginner. Take your time with each step, and soon you'll be building amazing things!
 
 Happy vibe coding! 🚀
+---
+
+## PART 18: TAKE YOUR VIBE CODING JOURNEY FURTHER
+
+You've made it through the complete guide! You now have everything you need to start building real applications with AI as your coding partner.
+
+### From Photography to Full-Stack Development in 6 Months
+
+This entire guide was created by **Galen Oakes**, who was a professional photographer just 6 months ago with zero coding experience. Through vibe coding with AI, Galen went from complete beginner to full-stack developer—building websites, apps, and products from scratch.
+
+**Galen's journey:**
+- Started with zero programming knowledge
+- Learned to vibe code by describing what he wanted to build
+- Built his first app within weeks
+- Now creates complex full-stack applications daily
+- Helps others build their ideas into reality
+
+This website you're reading right now? Built entirely through vibe coding. Every feature, every page, every interaction—created by describing the vision to AI and iterating until it was perfect.
+
+---
+
+### Need Help Building Your Idea?
+
+If you're ready to take your project to the next level, Galen offers several services:
+
+#### 🤝 One-on-One Vibe Coding Sessions
+**Perfect for:**
+- Getting unstuck on a specific problem
+- Learning advanced vibe coding techniques
+- Code review and best practices
+- Debugging tricky issues
+- Architecture guidance
+
+**How it works:** Book a 1-hour session where Galen works directly with you in your codebase, showing you how to effectively communicate with AI to solve complex problems.
+
+---
+
+#### 🚀 MVP Development
+**Perfect for:**
+- Entrepreneurs with an app idea who need a technical co-founder
+- Startups that need to validate their concept quickly
+- Businesses wanting to test a new product idea
+
+**What you get:** Galen will help you define your MVP scope, build it using modern tech stacks (Next.js, React Native, Supabase), and deploy it to production. Get from idea to live product in weeks, not months.
+
+---
+
+#### 💼 Fractional CTO Services
+**Perfect for:**
+- Startups that need technical leadership but can't afford a full-time CTO
+- Companies building their first technical product
+- Teams that need strategic technical guidance
+
+**What you get:** Technical strategy, architecture decisions, tech stack selection, team management, and ongoing technical oversight—without the full-time CTO price tag.
+
+---
+
+#### 🛠️ Full Product Development
+**Perfect for:**
+- Building a complete SaaS product
+- Creating mobile apps for iOS and Android
+- Developing custom business software
+- Building AI-powered applications
+
+**What you get:** End-to-end product development from concept to launch. Modern, scalable architecture using Next.js, React Native, Supabase, AI integrations, payment processing, and everything in between.
+
+---
+
+#### 📊 Technical Advisory & Consulting
+**Perfect for:**
+- Companies evaluating AI integration opportunities
+- Businesses modernizing their tech stack
+- Teams adopting vibe coding practices
+- Organizations wanting to leverage AI for development
+
+**What you get:** Strategic advice on leveraging AI for development, tech stack modernization, development process optimization, and team training on vibe coding practices.
+
+---
+
+### Why Work with Galen?
+
+**Fresh Perspective:** Having just learned to code through vibe coding, Galen understands the beginner's perspective and can explain complex concepts in simple terms.
+
+**Modern Stack Expert:** Specializes in Next.js, React Native (Expo), TypeScript, Supabase, AI integrations (Claude, OpenAI), Vercel deployments, and modern web/mobile development.
+
+**Proven Results:** Goes from zero to deployed products in record time by leveraging AI effectively.
+
+**Entrepreneur Mindset:** Understands business needs, not just technical requirements. Focuses on shipping products that solve real problems.
+
+**AI-First Development:** Teaches you how to build faster and better by treating AI as your co-developer.
+
+---
+
+### Get in Touch
+
+Ready to build something amazing together?
+
+**Email:** g@braintied.com
+
+**What to include in your message:**
+- Brief description of your project or idea
+- What you need help with (session, MVP, CTO services, etc.)
+- Your timeline and goals
+- Any technical details you have so far
+
+**Response time:** Galen typically responds within 24 hours.
+
+---
+
+### Final Words
+
+Six months ago, Galen couldn't write a single line of code. Today, he builds production apps, manages databases, deploys to the cloud, integrates AI, and helps others do the same.
+
+**If he can do it, so can you.**
+
+Vibe coding isn't just a faster way to build—it's a complete democratization of software development. Anyone with an idea and the willingness to learn can now build real, professional applications.
+
+This guide gave you all the tools you need. Now it's your turn to build something amazing.
+
+And if you need help along the way, Galen is here for you.
+
+**Happy building! 🚀**
+
+---
+
+*This guide was created with love by Galen Oakes and the Braintied team. We believe everyone should have the power to build their ideas into reality.*
+

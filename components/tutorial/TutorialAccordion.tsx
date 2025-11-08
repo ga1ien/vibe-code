@@ -46,7 +46,7 @@ export function TutorialAccordion({
     }
   }, [activeSection]);
 
-  const renderContent = (content: string) => {
+  const renderContent = (content: string, isActive: boolean) => {
     const parts = [];
     const codeBlockRegex = /```(\w+)?\n([\s\S]*?)```/g;
     let lastIndex = 0;
@@ -70,12 +70,14 @@ export function TutorialAccordion({
         );
       }
 
-      // Add code block
+      // Add code block - only render when section is active (lazy load on expansion)
       const language = match[1] || "bash";
       const code = match[2].trim();
-      parts.push(
-        <CodeBlock key={`code-${match.index}`} code={code} language={language} />
-      );
+      if (isActive) {
+        parts.push(
+          <CodeBlock key={`code-${match.index}`} code={code} language={language} />
+        );
+      }
 
       lastIndex = match.index + match[0].length;
     }
@@ -158,7 +160,7 @@ export function TutorialAccordion({
                   transition={{ duration: 0.4 }}
                   className="space-y-4"
                 >
-                  {renderContent(section.content)}
+                  {renderContent(section.content, activeSection === section.id)}
                 </motion.div>
               </AccordionContent>
             </AccordionItem>
