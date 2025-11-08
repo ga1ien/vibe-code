@@ -140,7 +140,7 @@ export function Hero() {
           <p className="text-lg text-slate-300 mb-6">
             <span className="text-cyan-400 font-semibold">Build websites, apps, and tools, today</span>
           </p>
-          <Link href="/tutorial">
+          <Link href="/tutorial#tutorial-start">
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Button
                 size="lg"

@@ -80,7 +80,7 @@ export function Features() {
           <p className="text-lg text-slate-400 mb-8 max-w-2xl mx-auto">
             Follow our complete step-by-step guide and build your first app in under an hour.
           </p>
-          <a href="/tutorial">
+          <a href="/tutorial#tutorial-start">
             <button className="bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white px-8 py-4 text-lg rounded-xl shadow-lg shadow-purple-500/50 transition-all hover:scale-105">
               Get Started
             </button>

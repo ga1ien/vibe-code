@@ -59,14 +59,19 @@ export function TutorialContent({ sections }: TutorialContentProps) {
       />
 
       {/* Main Content */}
-      <main className="flex-1 p-6 lg:p-12 max-w-4xl mx-auto">
+      <main id="tutorial-start" className="flex-1 p-6 lg:p-12 max-w-4xl mx-auto">
         <div className="mb-12">
-          <h1 className="text-4xl sm:text-5xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">
-            The Complete Beginner's<br />Guide to Vibe Coding
+          <h1 className="text-4xl sm:text-5xl font-bold mb-6 bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">
+            Your Journey to Building<br />Anything Starts Here
           </h1>
-          <p className="text-xl text-slate-400">
-            Learn to build websites and apps with AI as your coding partner.<br />
-            Follow these steps to go from zero to deployed app.
+          <p className="text-xl text-slate-300 mb-4 leading-relaxed">
+            Welcome! You're about to discover something incredible: building real apps and websites without needing to be a programmer.
+          </p>
+          <p className="text-lg text-slate-400 leading-relaxed">
+            In this step-by-step guide, you'll learn how to use AI as your personal coding partner. You describe what you want in plain English, and AI writes the code for you. By the end, you'll have a live website on the internet—built entirely by you, with AI's help.
+          </p>
+          <p className="text-lg text-slate-400 mt-4 leading-relaxed">
+            <span className="text-purple-400 font-semibold">No coding experience needed.</span> Just follow along, one step at a time. Let's build something amazing together!
           </p>
         </div>
 
