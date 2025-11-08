@@ -1,36 +1,148 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Vibe Code Documentation Site
 
-## Getting Started
+A beautiful, spatial documentation site with smooth animations and glassmorphism design, built to teach beginners how to start coding with AI.
 
-First, run the development server:
+## ✨ Features
+
+- **Spatial Design**: 3D effects, depth layers, and glassmorphism
+- **Animated Gradients**: Infinite animated gradient orbs in the background
+- **Interactive Tutorial**: 17-part accordion-based tutorial with progress tracking
+- **Code Syntax Highlighting**: Beautiful code blocks with copy functionality
+- **Dark Mode**: Optimized for dark mode with purple/blue gradient theme
+- **Fully Responsive**: Mobile-optimized with collapsible sidebar
+- **Smooth Animations**: Framer Motion animations throughout
+
+## 🚀 Tech Stack
+
+- **Next.js 14+** (App Router, TypeScript)
+- **Tailwind CSS** - Utility-first styling
+- **shadcn/ui** - Beautiful, accessible components
+- **Framer Motion** - Smooth animations and transitions
+- **next-themes** - Dark mode support
+- **react-syntax-highlighter** - Code syntax highlighting
+- **Lucide Icons** - Icon system
+
+## 📦 Installation
 
 ```bash
+# Clone the repository
+git clone <your-repo-url>
+
+# Navigate to project
+cd vibe-coding-site
+
+# Install dependencies
+npm install
+
+# Run development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to see the site.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📁 Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+vibe-coding-site/
+├── app/
+│   ├── layout.tsx          # Root layout with providers
+│   ├── page.tsx            # Homepage
+│   └── tutorial/
+│       └── page.tsx        # Tutorial page
+├── components/
+│   ├── ui/                 # shadcn components
+│   ├── layout/
+│   │   ├── AnimatedGradient.tsx
+│   │   ├── Navigation.tsx
+│   │   └── ThemeProvider.tsx
+│   ├── home/
+│   │   ├── Hero.tsx
+│   │   ├── FeatureCard.tsx
+│   │   └── Features.tsx
+│   └── tutorial/
+│       ├── CodeBlock.tsx
+│       ├── Sidebar.tsx
+│       ├── TutorialAccordion.tsx
+│       └── TutorialContent.tsx
+├── lib/
+│   ├── parseTutorial.ts   # Parse markdown tutorial
+│   └── utils.ts           # Utilities
+├── content/
+│   └── tutorial.md        # Tutorial content
+└── public/                # Static assets
+```
 
-## Learn More
+## 🎨 Design System
 
-To learn more about Next.js, take a look at the following resources:
+### Colors
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Primary**: Purple (#8B5CF6) to Blue (#3B82F6) gradient
+- **Secondary**: Cyan (#06B6D4)
+- **Background**: Dark slate (#0F172A, #1E293B)
+- **Glass effects**: `rgba(255, 255, 255, 0.05)` with backdrop blur
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Glassmorphism Classes
 
-## Deploy on Vercel
+```css
+.glass - Base glass effect
+.glass-dark - Dark glass variant
+.glass-card - Enhanced glass for cards
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🔧 Customization
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Updating Tutorial Content
+
+Edit `/content/tutorial.md` with markdown content. The parser will automatically split it into sections based on `## PART X:` headings.
+
+### Changing Colors
+
+Update CSS variables in `/app/globals.css` under the `.dark` selector.
+
+### Adding New Pages
+
+Create new pages in the `/app` directory following Next.js App Router conventions.
+
+## 📱 Responsive Design
+
+- **Desktop**: Sticky sidebar navigation
+- **Tablet**: Collapsible sidebar
+- **Mobile**: Floating menu button with slide-in sidebar
+
+## 🎬 Animations
+
+All animations use Framer Motion:
+- **Hero**: Fade in + slide up
+- **Cards**: 3D hover effects with rotation
+- **Accordions**: Smooth expand/collapse
+- **Gradients**: Infinite looping animations
+
+## 🚀 Deployment
+
+### Deploy to Vercel
+
+```bash
+# Install Vercel CLI
+npm i -g vercel
+
+# Deploy
+vercel
+```
+
+Or connect your GitHub repo to Vercel for automatic deployments.
+
+## 📝 License
+
+MIT
+
+## 🙏 Credits
+
+Built with:
+- [Next.js](https://nextjs.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [shadcn/ui](https://ui.shadcn.com/)
+- [Framer Motion](https://www.framer.com/motion/)
+
+---
+
+Made with 💜 for aspiring vibe coders

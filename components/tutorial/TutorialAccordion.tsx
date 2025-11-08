@@ -1,0 +1,153 @@
+"use client";
+
+import { useRef, useEffect } from "react";
+import { motion } from "framer-motion";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import { Badge } from "@/components/ui/badge";
+import { TutorialSection } from "@/lib/parseTutorial";
+import { CodeBlock } from "./CodeBlock";
+
+interface TutorialAccordionProps {
+  sections: TutorialSection[];
+  activeSection: string;
+  setActiveSection: (id: string) => void;
+  onSectionComplete: (id: string) => void;
+}
+
+export function TutorialAccordion({
+  sections,
+  activeSection,
+  setActiveSection,
+  onSectionComplete,
+}: TutorialAccordionProps) {
+  const sectionRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
+
+  useEffect(() => {
+    if (activeSection && sectionRefs.current[activeSection]) {
+      sectionRefs.current[activeSection]?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  }, [activeSection]);
+
+  const renderContent = (content: string) => {
+    const parts = [];
+    const codeBlockRegex = /```(\w+)?\n([\s\S]*?)```/g;
+    let lastIndex = 0;
+    let match;
+
+    while ((match = codeBlockRegex.exec(content)) !== null) {
+      // Add text before code block
+      if (match.index > lastIndex) {
+        const text = content.substring(lastIndex, match.index);
+        parts.push(
+          <div
+            key={`text-${lastIndex}`}
+            className="prose prose-invert prose-slate max-w-none"
+            dangerouslySetInnerHTML={{
+              __html: text
+                .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
+                .replace(/`(.+?)`/g, "<code>$1</code>")
+                .replace(/\n/g, "<br />"),
+            }}
+          />
+        );
+      }
+
+      // Add code block
+      const language = match[1] || "bash";
+      const code = match[2].trim();
+      parts.push(
+        <CodeBlock key={`code-${match.index}`} code={code} language={language} />
+      );
+
+      lastIndex = match.index + match[0].length;
+    }
+
+    // Add remaining text
+    if (lastIndex < content.length) {
+      const text = content.substring(lastIndex);
+      parts.push(
+        <div
+          key={`text-${lastIndex}`}
+          className="prose prose-invert prose-slate max-w-none text-slate-300 leading-relaxed"
+          dangerouslySetInnerHTML={{
+            __html: text
+              .replace(/\*\*(.+?)\*\*/g, "<strong class='text-purple-300'>$1</strong>")
+              .replace(/`(.+?)`/g, "<code class='px-1.5 py-0.5 bg-slate-700 rounded text-sm'>$1</code>")
+              .replace(/^### (.+)$/gm, "<h3 class='text-xl font-bold text-slate-100 mt-6 mb-3'>$1</h3>")
+              .replace(/^#### (.+)$/gm, "<h4 class='text-lg font-bold text-slate-200 mt-4 mb-2'>$1</h4>")
+              .replace(/^\d+\. (.+)$/gm, "<li class='ml-4'>$1</li>")
+              .replace(/^- (.+)$/gm, "<li class='ml-4'>$1</li>")
+              .replace(/\n\n/g, "<br /><br />")
+              .replace(/\n/g, "<br />"),
+          }}
+        />
+      );
+    }
+
+    return parts;
+  };
+
+  return (
+    <div className="space-y-4">
+      <Accordion
+        type="single"
+        collapsible
+        value={activeSection}
+        onValueChange={(value) => {
+          setActiveSection(value);
+          if (value) {
+            onSectionComplete(value);
+          }
+        }}
+        className="space-y-4"
+      >
+        {sections.map((section, index) => (
+          <motion.div
+            key={section.id}
+            ref={(el) => {
+              sectionRefs.current[section.id] = el;
+            }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
+          >
+            <AccordionItem
+              value={section.id}
+              className="glass-card border-purple-500/20 rounded-xl overflow-hidden"
+            >
+              <AccordionTrigger className="px-6 py-4 hover:no-underline hover:bg-white/5">
+                <div className="flex items-center gap-4 text-left">
+                  <Badge variant="outline" className="shrink-0">
+                    Part {section.partNumber}
+                  </Badge>
+                  <span className="text-lg font-semibold text-slate-100">
+                    {section.title}
+                  </span>
+                </div>
+              </AccordionTrigger>
+              <AccordionContent className="px-6 py-6">
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.4 }}
+                  className="space-y-4"
+                >
+                  {renderContent(section.content)}
+                </motion.div>
+              </AccordionContent>
+            </AccordionItem>
+          </motion.div>
+        ))}
+      </Accordion>
+    </div>
+  );
+}
