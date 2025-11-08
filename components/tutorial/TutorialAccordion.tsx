@@ -47,15 +47,18 @@ export function TutorialAccordion({
   }, [activeSection]);
 
   const renderContent = (content: string, isActive: boolean) => {
+    // Remove the first ## header (PART X: title) since it's already in the accordion trigger
+    const contentWithoutTitle = content.replace(/^##\s+PART\s+\d+:.*?\n+/i, '');
+
     const parts = [];
     const codeBlockRegex = /```(\w+)?\n([\s\S]*?)```/g;
     let lastIndex = 0;
     let match;
 
-    while ((match = codeBlockRegex.exec(content)) !== null) {
+    while ((match = codeBlockRegex.exec(contentWithoutTitle)) !== null) {
       // Add text before code block
       if (match.index > lastIndex) {
-        const text = content.substring(lastIndex, match.index);
+        const text = contentWithoutTitle.substring(lastIndex, match.index);
         parts.push(
           <div
             key={`text-${lastIndex}`}
@@ -83,8 +86,8 @@ export function TutorialAccordion({
     }
 
     // Add remaining text
-    if (lastIndex < content.length) {
-      const text = content.substring(lastIndex);
+    if (lastIndex < contentWithoutTitle.length) {
+      const text = contentWithoutTitle.substring(lastIndex);
       parts.push(
         <div
           key={`text-${lastIndex}`}
