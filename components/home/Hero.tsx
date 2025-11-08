@@ -90,7 +90,7 @@ export function Hero() {
           transition={{ duration: 0.6, delay: 0.4 }}
         >
           <span className="bg-gradient-to-r from-purple-400 via-blue-400 to-cyan-400 bg-clip-text text-transparent">
-            Build Anything by Just Describing It
+            Build Anything by<br />Just Describing It
           </span>
         </motion.h1>
 
@@ -102,9 +102,8 @@ export function Hero() {
           transition={{ duration: 0.6, delay: 0.6 }}
         >
           No coding experience? No problem. With{" "}
-          <span className="text-purple-400 font-semibold">Vibe Coding</span>, you tell AI what you want in plain English,
-          and it writes the code for you.{" "}
-          <span className="text-cyan-400 font-semibold">Build websites, apps, and tools—instantly.</span>
+          <span className="text-purple-400 font-semibold">Vibe Coding</span>, you tell AI<br />
+          what you want in plain English, and it writes the code for you.
         </motion.p>
 
         {/* Typing Example showcase */}
@@ -131,13 +130,16 @@ export function Hero() {
           </div>
         </motion.div>
 
-        {/* CTA Button */}
+        {/* CTA Section */}
         <motion.div
-          className="flex justify-center"
+          className="flex flex-col items-center"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 1.0 }}
         >
+          <p className="text-lg text-slate-300 mb-6">
+            <span className="text-cyan-400 font-semibold">Build websites, apps, and tools, today</span>
+          </p>
           <Link href="/tutorial">
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Button
@@ -145,7 +147,6 @@ export function Hero() {
                 className="bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white px-8 py-6 text-lg rounded-xl shadow-lg shadow-purple-500/50"
               >
                 Begin Tutorial
-                <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
             </motion.div>
           </Link>
