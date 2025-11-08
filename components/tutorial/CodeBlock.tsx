@@ -22,7 +22,7 @@ export function CodeBlock({ code, language = "bash" }: CodeBlockProps) {
   };
 
   return (
-    <div className="relative group my-4">
+    <div className="relative group my-3 sm:my-4">
       {/* Language badge and copy button */}
       <div className="flex items-center justify-between mb-2">
         <Badge variant="secondary" className="text-xs">
@@ -32,33 +32,34 @@ export function CodeBlock({ code, language = "bash" }: CodeBlockProps) {
           variant="ghost"
           size="sm"
           onClick={handleCopy}
-          className="opacity-0 group-hover:opacity-100 transition-opacity"
+          className="opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity text-xs sm:text-sm"
         >
           {copied ? (
             <>
-              <Check className="h-4 w-4 mr-1" />
-              Copied!
+              <Check className="h-3 w-3 sm:h-4 sm:w-4 mr-1" />
+              <span className="hidden sm:inline">Copied!</span>
             </>
           ) : (
             <>
-              <Copy className="h-4 w-4 mr-1" />
-              Copy
+              <Copy className="h-3 w-3 sm:h-4 sm:w-4 mr-1" />
+              <span className="hidden sm:inline">Copy</span>
             </>
           )}
         </Button>
       </div>
 
       {/* Code block */}
-      <div className="glass-card rounded-lg overflow-hidden">
+      <div className="glass-card rounded-lg overflow-x-auto">
         <SyntaxHighlighter
           language={language}
           style={vscDarkPlus}
           customStyle={{
             margin: 0,
-            padding: "1.5rem",
+            padding: "1rem",
             background: "transparent",
-            fontSize: "0.875rem",
+            fontSize: "0.75rem",
           }}
+          wrapLongLines={true}
           showLineNumbers
         >
           {code}

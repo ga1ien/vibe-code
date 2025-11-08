@@ -81,7 +81,7 @@ export function Hero() {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8">
-      <div className="max-w-5xl mx-auto text-center">
+      <div className="max-w-5xl mx-auto text-center -mt-[88px] sm:mt-0 lg:-mt-[200px]">
         {/* Main Heading */}
         <motion.h1
           className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6"
@@ -89,7 +89,13 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
         >
-          <span className="bg-gradient-to-r from-purple-400 via-blue-400 to-cyan-400 bg-clip-text text-transparent">
+          {/* Mobile Layout - "by Just Describing It" smaller and on one line */}
+          <span className="sm:hidden bg-gradient-to-r from-purple-400 via-blue-400 to-cyan-400 bg-clip-text text-transparent">
+            Build Anything<br />
+            <span className="text-3xl">by Just Describing It</span>
+          </span>
+          {/* Desktop Layout - Original */}
+          <span className="hidden sm:inline bg-gradient-to-r from-purple-400 via-blue-400 to-cyan-400 bg-clip-text text-transparent">
             Build Anything by<br />Just Describing It
           </span>
         </motion.h1>
@@ -132,7 +138,7 @@ export function Hero() {
 
         {/* CTA Section */}
         <motion.div
-          className="flex flex-col items-center"
+          className="flex flex-col items-center -mt-[22px]"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 1.0 }}
@@ -166,7 +172,7 @@ export function Hero() {
 
         {/* Scroll Indicator */}
         <motion.div
-          className="absolute bottom-12 left-1/2 -translate-x-1/2"
+          className="absolute bottom-[calc(3rem+33px)] left-1/2 -translate-x-1/2"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1, y: [0, 10, 0] }}
           transition={{

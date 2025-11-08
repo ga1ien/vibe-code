@@ -141,4 +141,24 @@
     border: 1px solid rgba(139, 92, 246, 0.2);
     box-shadow: 0 8px 32px rgba(139, 92, 246, 0.15);
   }
+
+  /* Hide scrollbars while keeping functionality */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Global scrollbar hiding for the entire page */
+  * {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  *::-webkit-scrollbar {
+    display: none;
+  }
 }

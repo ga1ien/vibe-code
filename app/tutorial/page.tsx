@@ -1,12 +1,8 @@
-import { TutorialContent } from "@/components/tutorial/TutorialContent";
+import TutorialPageClient from "@/components/tutorial/TutorialPageClient";
 import { parseTutorial } from "@/lib/parseTutorial";
 
 export default function TutorialPage() {
   const sections = parseTutorial();
 
-  return (
-    <div className="pt-16">
-      <TutorialContent sections={sections} />
-    </div>
-  );
+  return <TutorialPageClient sections={sections} />;
 }

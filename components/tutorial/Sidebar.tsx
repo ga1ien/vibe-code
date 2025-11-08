@@ -2,9 +2,10 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { CheckCircle2, Circle, Menu, X } from "lucide-react";
+import { CheckCircle2, Circle, Menu, X, Code2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { TutorialSection } from "@/lib/parseTutorial";
+import Link from "next/link";
 
 interface SidebarProps {
   sections: TutorialSection[];
@@ -23,8 +24,33 @@ export function Sidebar({
 
   const progress = (completedSections.size / sections.length) * 100;
 
-  const SidebarContent = () => (
+  const SidebarContent = ({ showBranding = false }) => (
     <>
+      {/* Branding - Desktop Only */}
+      {showBranding && (
+        <div className="mb-6 pb-6 border-b border-white/10">
+          <Link href="/" className="flex items-center space-x-2 group">
+            <motion.div
+              whileHover={{ rotate: 360, scale: 1.1 }}
+              transition={{ duration: 0.5 }}
+            >
+              <Code2 className="h-6 w-6 text-purple-400 shrink-0" />
+            </motion.div>
+            <span className="text-xl font-semibold text-slate-200">
+              Learn to Vibe Code
+            </span>
+          </Link>
+          <a
+            href="https://braintied.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm text-slate-400 hover:text-slate-300 transition-colors ml-8"
+          >
+            powered by Braintied
+          </a>
+        </div>
+      )}
+
       {/* Progress */}
       <div className="mb-6">
         <div className="flex items-center justify-between mb-2">
@@ -96,7 +122,7 @@ export function Sidebar({
       <Button
         variant="outline"
         size="icon"
-        className="fixed bottom-4 right-4 z-50 lg:hidden glass-card"
+        className="fixed bottom-6 right-6 z-50 lg:hidden glass-card shadow-lg"
         onClick={() => setIsOpen(!isOpen)}
       >
         {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -118,14 +144,14 @@ export function Sidebar({
             className="w-80 h-full glass-dark p-6 overflow-y-auto"
             onClick={(e) => e.stopPropagation()}
           >
-            <SidebarContent />
+            <SidebarContent showBranding={false} />
           </motion.div>
         </motion.div>
       )}
 
       {/* Desktop sidebar */}
-      <aside className="hidden lg:block w-80 h-[calc(100vh-4rem)] sticky top-16 p-6 glass-dark border-r border-white/10 overflow-y-auto">
-        <SidebarContent />
+      <aside className="hidden lg:block w-80 h-[calc(100vh-66px)] sticky top-[33px] p-6 glass-dark border-r border-white/10 overflow-y-auto scrollbar-hide rounded-r-2xl">
+        <SidebarContent showBranding={true} />
       </aside>
     </>
   );

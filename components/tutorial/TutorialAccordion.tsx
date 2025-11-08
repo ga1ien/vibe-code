@@ -405,17 +405,17 @@ export function TutorialAccordion({
               value={section.id}
               className="glass-card border-purple-500/20 rounded-xl overflow-hidden"
             >
-              <AccordionTrigger className="px-6 py-4 hover:no-underline hover:bg-white/5">
-                <div className="flex items-center gap-4 text-left">
-                  <Badge variant="outline" className="shrink-0">
+              <AccordionTrigger className="px-4 sm:px-6 py-3 sm:py-4 hover:no-underline hover:bg-white/5">
+                <div className="flex items-center gap-2 sm:gap-4 text-left">
+                  <Badge variant="outline" className="shrink-0 text-xs sm:text-sm">
                     Part {section.partNumber}
                   </Badge>
-                  <span className="text-lg font-semibold text-slate-100">
+                  <span className="text-sm sm:text-base lg:text-lg font-semibold text-slate-100">
                     {section.title}
                   </span>
                 </div>
               </AccordionTrigger>
-              <AccordionContent className="px-6 py-4">
+              <AccordionContent className="px-4 sm:px-6 py-3 sm:py-4">
                 <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}

@@ -57,21 +57,23 @@ export function TutorialContent({ sections }: TutorialContentProps) {
       />
 
       {/* Main Content */}
-      <main id="tutorial-start" className="flex-1 p-6 lg:p-12 max-w-4xl mx-auto scroll-mt-20">
-        <div className="mb-12">
-          <h1 className="text-4xl sm:text-5xl font-bold mb-6 bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">
-            Your Journey to Building<br />Anything Starts Here
+      <main id="tutorial-start" className="flex-1 p-4 sm:p-6 lg:p-12 lg:pt-[22px] max-w-4xl mx-auto scroll-mt-20">
+        <div className="mb-8 sm:mb-12">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent leading-tight pb-2">
+            <span className="hidden sm:inline">Your Journey to Building<br />Anything Starts Here</span>
+            <span className="sm:hidden">Your Journey to Building Anything Starts Here</span>
           </h1>
-          <p className="text-xl text-slate-300 mb-4 leading-relaxed">
+          <p className="text-lg sm:text-xl text-slate-300 mb-3 sm:mb-4 leading-relaxed">
             Welcome! You're about to discover something incredible:<br />
             building real apps and websites without needing to be a programmer.
           </p>
-          <p className="text-lg text-slate-400 leading-relaxed">
-            In this step-by-step guide, you'll learn how to use AI as your personal coding partner. You describe what you want in plain English, and AI writes the code for you. By the end, you'll have a live website on the internet—built entirely by you, with AI's help.
+          <p className="text-base sm:text-lg text-slate-400 leading-relaxed">
+            In this step-by-step guide, you'll learn how to use AI as your personal coding partner. You describe what you want in plain English, and AI writes the code for you. By the end, you'll have a live website on the internet, built entirely by you, with AI's help.
           </p>
-          <p className="text-lg text-slate-400 mt-4 leading-relaxed">
+          <p className="text-base sm:text-lg text-slate-400 mt-3 sm:mt-4 leading-relaxed">
             <span className="text-purple-400 font-semibold">No coding experience needed.</span><br />
-            Just follow along, one step at a time. Let's build something amazing together!
+            Just follow along, one step at a time.<br />
+            Let's build something amazing together!
           </p>
         </div>
 

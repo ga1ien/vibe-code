@@ -52,15 +52,27 @@ export function Features() {
             What is Vibe Coding?
           </h2>
           <p className="text-xl text-slate-400 max-w-3xl mx-auto leading-relaxed">
-            It's the revolutionary way to build software by<br />describing what you want instead of writing code.
-            <span className="block mt-2 text-slate-300">
-              Think of it as <span className="text-purple-400 font-semibold">ChatGPT for building apps</span>.
+            {/* Mobile Layout */}
+            <span className="sm:hidden">
+              It's the revolutionary way to build<br />
+              software by describing what you want<br />
+              instead of writing code.
+              <span className="block mt-2 text-base text-slate-300">
+                Think of it as <span className="text-purple-400 font-semibold">ChatGPT for building apps</span>.
+              </span>
+            </span>
+            {/* Desktop Layout */}
+            <span className="hidden sm:inline">
+              It's the revolutionary way to build software by<br />describing what you want instead of writing code.
+              <span className="block mt-2 text-slate-300">
+                Think of it as <span className="text-purple-400 font-semibold">ChatGPT for building apps</span>.
+              </span>
             </span>
           </p>
         </div>
 
         {/* Feature Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16 lg:mb-[calc(4rem+200px)]">
           {features.map((feature, index) => (
             <FeatureCard
               key={feature.title}
@@ -73,29 +85,37 @@ export function Features() {
         </div>
 
         {/* Community Section */}
-        <div className="glass-card rounded-2xl p-8 md:p-12 mb-16 border border-purple-500/20">
-          <div className="text-center max-w-3xl mx-auto">
-            <h3 className="text-3xl font-bold text-slate-100 mb-4">
-              You're Not Alone on This Journey
-            </h3>
-            <p className="text-lg text-slate-300 leading-relaxed mb-6">
-              Our Slack community brings together<br />
+        <div className="text-center mb-16">
+          <h3 className="text-4xl sm:text-5xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">
+            You're Not Alone on This Journey
+          </h3>
+        </div>
+
+        <div className="glass-card rounded-2xl p-4 md:p-12 mb-8 border border-purple-500/20 max-w-3xl mx-auto">
+          <div className="text-center">
+            <p className="text-lg sm:text-3xl text-slate-300 leading-relaxed mb-3">
+              Our Slack community brings together
+            </p>
+            <p className="text-sm sm:text-lg text-slate-300 leading-relaxed mb-6">
               <span className="text-purple-400 font-semibold">artists</span>, <span className="text-blue-400 font-semibold">creatives</span>, <span className="text-cyan-400 font-semibold">builders</span>, <span className="text-purple-400 font-semibold">entrepreneurs</span>, the <span className="text-blue-400 font-semibold">AI-curious</span>, and <span className="text-cyan-400 font-semibold">AI-native</span> alike.
             </p>
-            <p className="text-lg text-slate-400 leading-relaxed mb-8">
+            <p className="text-lg text-slate-400 leading-relaxed">
               Share what you're building, learn from each other, get unstuck when things break, and celebrate wins together. From your first "Hello World" to shipping production apps, you'll find encouragement, answers, and people who get it.
             </p>
-            <a href="https://join.slack.com/t/sentigen/shared_invite/zt-3ej3q69om-~acz4A639DNiq_LeYcf_Ag" target="_blank" rel="noopener noreferrer">
-              <button className="bg-gradient-to-r from-blue-900 to-purple-900 hover:from-blue-800 hover:to-purple-800 text-white px-8 py-4 text-lg rounded-xl shadow-lg shadow-blue-900/50 transition-all hover:scale-105 whitespace-nowrap">
-                Join the Community
-              </button>
-            </a>
           </div>
         </div>
 
+        <div className="text-center mb-16 lg:mb-[calc(4rem+200px)]">
+          <a href="https://join.slack.com/t/sentigen/shared_invite/zt-3ej3q69om-~acz4A639DNiq_LeYcf_Ag" target="_blank" rel="noopener noreferrer">
+            <button className="bg-gradient-to-r from-blue-900 to-purple-900 hover:from-blue-800 hover:to-purple-800 text-white px-8 py-4 text-lg rounded-xl shadow-lg shadow-blue-900/50 transition-all hover:scale-105 whitespace-nowrap">
+              Join the Community
+            </button>
+          </a>
+        </div>
+
         {/* CTA Section */}
-        <div className="text-center">
-          <h3 className="text-3xl font-bold text-slate-100 mb-4">
+        <div className="text-center mb-6">
+          <h3 className="text-4xl sm:text-5xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent pb-2">
             Ready to Start Building?
           </h3>
           <p className="text-lg text-slate-400 mb-8 max-w-2xl mx-auto">
