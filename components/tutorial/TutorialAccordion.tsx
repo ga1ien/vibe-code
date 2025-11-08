@@ -26,8 +26,15 @@ export function TutorialAccordion({
   onSectionComplete,
 }: TutorialAccordionProps) {
   const sectionRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
+  const isInitialMount = useRef(true);
 
   useEffect(() => {
+    // Skip scroll on initial mount to prevent auto-scrolling to Part 1
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+      return;
+    }
+
     if (activeSection && sectionRefs.current[activeSection]) {
       // Wait for accordion animation to complete before scrolling
       setTimeout(() => {
