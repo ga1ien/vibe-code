@@ -140,16 +140,28 @@ export function Hero() {
           <p className="text-lg text-slate-300 mb-6">
             <span className="text-cyan-400 font-semibold">Build websites, apps, and tools, today</span>
           </p>
-          <Link href="/tutorial#tutorial-start">
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Button
-                size="lg"
-                className="bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white px-8 py-6 text-lg rounded-xl shadow-lg shadow-purple-500/50"
-              >
-                Begin Tutorial
-              </Button>
-            </motion.div>
-          </Link>
+          <div className="flex flex-col sm:flex-row gap-4 items-center">
+            <a href="https://join.slack.com/t/sentigen/shared_invite/zt-3ej3q69om-~acz4A639DNiq_LeYcf_Ag" target="_blank" rel="noopener noreferrer">
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <Button
+                  size="lg"
+                  className="w-[220px] bg-gradient-to-r from-blue-900 to-purple-900 hover:from-blue-800 hover:to-purple-800 text-white px-8 py-6 text-lg rounded-xl shadow-lg shadow-blue-900/50 transition-all"
+                >
+                  Join the Community
+                </Button>
+              </motion.div>
+            </a>
+            <Link href="/tutorial#tutorial-start">
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <Button
+                  size="lg"
+                  className="w-[220px] bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white px-8 py-6 text-lg rounded-xl shadow-lg shadow-purple-500/50"
+                >
+                  Get Started Now
+                </Button>
+              </motion.div>
+            </Link>
+          </div>
         </motion.div>
 
         {/* Scroll Indicator */}

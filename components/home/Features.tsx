@@ -72,6 +72,27 @@ export function Features() {
           ))}
         </div>
 
+        {/* Community Section */}
+        <div className="glass-card rounded-2xl p-8 md:p-12 mb-16 border border-purple-500/20">
+          <div className="text-center max-w-3xl mx-auto">
+            <h3 className="text-3xl font-bold text-slate-100 mb-4">
+              You're Not Alone on This Journey
+            </h3>
+            <p className="text-lg text-slate-300 leading-relaxed mb-6">
+              Our Slack community brings together<br />
+              <span className="text-purple-400 font-semibold">artists</span>, <span className="text-blue-400 font-semibold">creatives</span>, <span className="text-cyan-400 font-semibold">builders</span>, <span className="text-purple-400 font-semibold">entrepreneurs</span>, the <span className="text-blue-400 font-semibold">AI-curious</span>, and <span className="text-cyan-400 font-semibold">AI-native</span> alike.
+            </p>
+            <p className="text-lg text-slate-400 leading-relaxed mb-8">
+              Share what you're building, learn from each other, get unstuck when things break, and celebrate wins together. From your first "Hello World" to shipping production apps, you'll find encouragement, answers, and people who get it.
+            </p>
+            <a href="https://join.slack.com/t/sentigen/shared_invite/zt-3ej3q69om-~acz4A639DNiq_LeYcf_Ag" target="_blank" rel="noopener noreferrer">
+              <button className="bg-gradient-to-r from-blue-900 to-purple-900 hover:from-blue-800 hover:to-purple-800 text-white px-8 py-4 text-lg rounded-xl shadow-lg shadow-blue-900/50 transition-all hover:scale-105 whitespace-nowrap">
+                Join the Community
+              </button>
+            </a>
+          </div>
+        </div>
+
         {/* CTA Section */}
         <div className="text-center">
           <h3 className="text-3xl font-bold text-slate-100 mb-4">
@@ -82,7 +103,7 @@ export function Features() {
           </p>
           <a href="/tutorial#tutorial-start">
             <button className="bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white px-8 py-4 text-lg rounded-xl shadow-lg shadow-purple-500/50 transition-all hover:scale-105">
-              Get Started
+              Get Started Now
             </button>
           </a>
         </div>
