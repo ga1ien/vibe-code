@@ -10,9 +10,7 @@ interface TutorialContentProps {
 }
 
 export function TutorialContent({ sections }: TutorialContentProps) {
-  const [activeSection, setActiveSection] = useState<string>(
-    sections[0]?.id || ""
-  );
+  const [activeSection, setActiveSection] = useState<string>("");
   const [completedSections, setCompletedSections] = useState<Set<string>>(
     new Set()
   );
