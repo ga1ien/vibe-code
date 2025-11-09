@@ -34,11 +34,20 @@ export const metadata: Metadata = {
     siteName: "Vibe Code",
     locale: "en_US",
     type: "website",
+    images: [
+      {
+        url: '/opengraph-image',
+        width: 1200,
+        height: 630,
+        alt: 'Learn to Build with AI - Vibe Code',
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Learn to Build with AI",
     description: "Master building websites and apps by describing what you want in plain English. AI writes the code for you—no coding experience needed.",
+    images: ['/twitter-image'],
   },
   robots: {
     index: true,
@@ -52,9 +61,12 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: "/icon.svg",
-    shortcut: "/favicon.svg",
-    apple: "/icon.svg",
+    icon: [
+      { url: '/icon', type: 'image/png', sizes: '32x32' },
+    ],
+    apple: [
+      { url: '/apple-icon', type: 'image/png', sizes: '180x180' },
+    ],
   },
 };
 
