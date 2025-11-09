@@ -107,9 +107,15 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.6 }}
         >
-          No coding experience? No problem. With{" "}
-          <span className="text-purple-400 font-semibold">Vibe Coding</span>, you tell AI<br />
-          what you want in plain English, and it writes the code for you.
+          <span className="sm:hidden">
+            No coding experience? No problem.<br />
+            With <span className="text-purple-400 font-semibold">Vibe Coding</span>, you tell AI what you want in plain English, and it writes the code for you.
+          </span>
+          <span className="hidden sm:inline">
+            No coding experience? No problem. With{" "}
+            <span className="text-purple-400 font-semibold">Vibe Coding</span>, you tell AI<br />
+            what you want in plain English, and it writes the code for you.
+          </span>
         </motion.p>
 
         {/* Typing Example showcase */}
