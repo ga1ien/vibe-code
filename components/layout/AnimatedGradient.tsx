@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export function AnimatedGradient() {
   return (
-    <div className="absolute inset-0 -z-10 overflow-hidden min-h-full">
+    <div className="fixed inset-0 -z-10 overflow-hidden min-h-screen">
       {/* Base gradient background */}
       <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900" />
 

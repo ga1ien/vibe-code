@@ -76,9 +76,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className="min-h-full">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-slate-900`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-slate-900 min-h-full`}
       >
         <GoogleAnalytics />
         <ThemeProvider
