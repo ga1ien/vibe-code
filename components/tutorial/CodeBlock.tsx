@@ -49,7 +49,7 @@ export function CodeBlock({ code, language = "bash" }: CodeBlockProps) {
       </div>
 
       {/* Code block */}
-      <div className="glass-card rounded-lg overflow-x-auto">
+      <div className="glass-card rounded-lg overflow-x-auto w-full max-w-full min-w-0">
         <SyntaxHighlighter
           language={language}
           style={vscDarkPlus}
@@ -58,6 +58,8 @@ export function CodeBlock({ code, language = "bash" }: CodeBlockProps) {
             padding: "1rem",
             background: "transparent",
             fontSize: "0.75rem",
+            maxWidth: "100%",
+            width: "100%",
           }}
           wrapLongLines={true}
           showLineNumbers
