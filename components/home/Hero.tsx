@@ -81,7 +81,7 @@ export function Hero() {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8">
-      <div className="max-w-5xl mx-auto text-center -mt-[66px] sm:mt-0 lg:-mt-[200px]">
+      <div className="max-w-5xl mx-auto text-center -mt-[44px] sm:mt-0 lg:-mt-[200px]">
         {/* Main Heading */}
         <motion.h1
           className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6"
@@ -90,9 +90,9 @@ export function Hero() {
           transition={{ duration: 0.6, delay: 0.4 }}
         >
           {/* Mobile Layout - "by Just Describing It" smaller and on one line */}
-          <span className="sm:hidden bg-gradient-to-r from-purple-400 via-blue-400 to-cyan-400 bg-clip-text text-transparent leading-tight">
-            Build Anything<br />
-            <span className="text-3xl -mt-[11px] inline-block">by Just Describing It</span>
+          <span className="sm:hidden bg-gradient-to-r from-purple-400 via-blue-400 to-cyan-400 bg-clip-text text-transparent flex flex-col gap-[-11px]">
+            <span className="block">Build Anything</span>
+            <span className="text-3xl block -mt-[11px]">by Just Describing It</span>
           </span>
           {/* Desktop Layout - Original */}
           <span className="hidden sm:inline bg-gradient-to-r from-purple-400 via-blue-400 to-cyan-400 bg-clip-text text-transparent">
