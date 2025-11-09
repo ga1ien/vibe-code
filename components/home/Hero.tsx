@@ -146,14 +146,15 @@ export function Hero() {
           <p className="text-lg text-slate-300 mb-6">
             <span className="text-cyan-400 font-semibold">Build websites, apps, and tools, today</span>
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 items-center">
+          <div className="flex flex-row gap-3 sm:gap-4 items-center">
             <a href="https://join.slack.com/t/sentigen/shared_invite/zt-3ej3q69om-~acz4A639DNiq_LeYcf_Ag" target="_blank" rel="noopener noreferrer">
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                 <Button
                   size="lg"
-                  className="w-[220px] bg-gradient-to-r from-blue-900 to-purple-900 hover:from-blue-800 hover:to-purple-800 text-white px-8 py-6 text-lg rounded-xl shadow-lg shadow-blue-900/50 transition-all"
+                  className="w-[150px] sm:w-[220px] bg-gradient-to-r from-blue-900 to-purple-900 hover:from-blue-800 hover:to-purple-800 text-white px-4 sm:px-8 py-4 sm:py-6 text-sm sm:text-lg rounded-xl shadow-lg shadow-blue-900/50 transition-all"
                 >
-                  Join the Community
+                  <span className="hidden sm:inline">Join the Community</span>
+                  <span className="sm:hidden">Join Community</span>
                 </Button>
               </motion.div>
             </a>
@@ -161,9 +162,10 @@ export function Hero() {
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                 <Button
                   size="lg"
-                  className="w-[220px] bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white px-8 py-6 text-lg rounded-xl shadow-lg shadow-purple-500/50"
+                  className="w-[150px] sm:w-[220px] bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white px-4 sm:px-8 py-4 sm:py-6 text-sm sm:text-lg rounded-xl shadow-lg shadow-purple-500/50"
                 >
-                  Get Started Now
+                  <span className="hidden sm:inline">Get Started Now</span>
+                  <span className="sm:hidden">Get Started</span>
                 </Button>
               </motion.div>
             </Link>
