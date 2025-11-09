@@ -81,7 +81,7 @@ export function Hero() {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8">
-      <div className="max-w-5xl mx-auto text-center -mt-[64px] sm:mt-0 lg:-mt-[200px]">
+      <div className="max-w-5xl mx-auto text-center -mt-[71px] sm:mt-0 lg:-mt-[200px]">
         {/* Main Heading */}
         <motion.h1
           className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6"
