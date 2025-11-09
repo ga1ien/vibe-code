@@ -8,24 +8,44 @@ import { useState, useEffect } from "react";
 
 const examples = [
   {
-    prompt: "Create a recipe organizer where I can save my family's favorite meals",
-    app: "Recipe Keeper"
+    prompt: "Build a portfolio website to showcase my photography work with a gallery",
+    app: "Photography Portfolio"
   },
   {
-    prompt: "Build a birthday tracker so I never forget my friends' birthdays again",
-    app: "Birthday Reminder"
+    prompt: "Create a task management app for my freelance projects with time tracking",
+    app: "Freelance Tracker"
   },
   {
-    prompt: "Make a workout tracker to log my gym sessions and track progress",
-    app: "Fitness Logger"
+    prompt: "Design a landing page for my coffee shop with online ordering",
+    app: "Coffee Shop Website"
   },
   {
-    prompt: "Design a budget planner to help me manage my monthly expenses",
-    app: "Budget Buddy"
+    prompt: "Make an expense tracker that categorizes my spending and shows monthly reports",
+    app: "Budget Dashboard"
   },
   {
-    prompt: "Build a reading list where I can track books I want to read",
-    app: "Reading Tracker"
+    prompt: "Build a habit tracker that sends me daily reminders and shows my streaks",
+    app: "Habit Builder"
+  },
+  {
+    prompt: "Create a recipe blog where I can share my cooking tutorials with photos",
+    app: "Recipe Blog"
+  },
+  {
+    prompt: "Design a booking system for my salon with calendar and appointment reminders",
+    app: "Salon Scheduler"
+  },
+  {
+    prompt: "Make a workout planner that tracks my exercises and personal records",
+    app: "Fitness Planner"
+  },
+  {
+    prompt: "Build a property listing website for my real estate business",
+    app: "Real Estate Site"
+  },
+  {
+    prompt: "Create an inventory manager for my small business with low stock alerts",
+    app: "Inventory System"
   }
 ];
 
@@ -81,7 +101,7 @@ export function Hero() {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8">
-      <div className="max-w-5xl mx-auto text-center -mt-[71px] sm:mt-0 lg:-mt-[200px]">
+      <div className="max-w-5xl mx-auto text-center -mt-[74px] sm:mt-0 lg:-mt-[200px]">
         {/* Main Heading */}
         <motion.h1
           className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6"
