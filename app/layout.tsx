@@ -87,9 +87,11 @@ export default function RootLayout({
           enableSystem={false}
           disableTransitionOnChange
         >
-          <AnimatedGradient />
-          <Navigation />
-          <main className="relative">{children}</main>
+          <div className="relative min-h-screen bg-slate-900">
+            <AnimatedGradient />
+            <Navigation />
+            <main className="relative">{children}</main>
+          </div>
         </ThemeProvider>
       </body>
     </html>
