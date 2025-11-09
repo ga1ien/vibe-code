@@ -2158,7 +2158,7 @@ This entire guide was created by **Galen Oakes**, who was a professional photogr
 **Galen's journey:**
 - Started with zero programming knowledge
 - Learned to vibe code by describing what he wanted to build
-- Built his first app within weeks
+- Built his first app within hours
 - Now creates complex full-stack applications daily
 - Helps others build their ideas into reality
 

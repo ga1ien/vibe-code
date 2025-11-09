@@ -407,7 +407,7 @@ export function TutorialAccordion({
             >
               <AccordionTrigger className="px-4 sm:px-6 py-3 sm:py-4 hover:no-underline hover:bg-white/5">
                 <div className="flex items-center gap-2 sm:gap-4 text-left">
-                  <Badge variant="outline" className="shrink-0 text-xs sm:text-sm">
+                  <Badge variant="outline" className="shrink-0 text-xs sm:text-sm text-slate-400">
                     Part {section.partNumber}
                   </Badge>
                   <span className="text-sm sm:text-base lg:text-lg font-semibold text-slate-100">
